@@ -1,1 +1,0 @@
-/usr/bin/c++ "CMakeFiles/flexql-client.dir/src/main_client.cpp.o" "CMakeFiles/flexql-client.dir/src/client_api.cpp.o" -o /home/mayank/Videos/project_2_antigravity/bin/flexql-client 
