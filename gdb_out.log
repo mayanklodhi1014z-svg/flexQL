@@ -1,0 +1,51 @@
+GNU gdb (Ubuntu 15.0.50.20240403-0ubuntu1) 15.0.50.20240403-git
+Copyright (C) 2024 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./bin/flexql-server...
+(No debugging symbols found in ./bin/flexql-server)
+Starting program: /home/mayank/Videos/project_2_antigravity/bin/flexql-server 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[New Thread 0x7ffff77ff6c0 (LWP 30395)]
+[New Thread 0x7ffff6ffe6c0 (LWP 30396)]
+[New Thread 0x7ffff67fd6c0 (LWP 30397)]
+[New Thread 0x7ffff5ffc6c0 (LWP 30398)]
+[New Thread 0x7ffff57fb6c0 (LWP 30399)]
+[New Thread 0x7ffff4ffa6c0 (LWP 30400)]
+[New Thread 0x7ffff47f96c0 (LWP 30401)]
+[New Thread 0x7ffff3ff86c0 (LWP 30402)]
+[New Thread 0x7ffff37f76c0 (LWP 30403)]
+[New Thread 0x7ffff2ff66c0 (LWP 30404)]
+
+Thread 8 "flexql-server" received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 0x7ffff47f96c0 (LWP 30401)]
+0x00007ffff7d685d9 in std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) ()
+   from /lib/x86_64-linux-gnu/libstdc++.so.6
+#0  0x00007ffff7d685d9 in std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) ()
+   from /lib/x86_64-linux-gnu/libstdc++.so.6
+#1  0x00005555555838f2 in flexql::Table::insertRowFast(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, unsigned long, long) ()
+#2  0x0000555555561eed in flexql::Executor::executeInsert(flexql::ASTNode const&, bool, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) ()
+#3  0x00005555555648d4 in flexql::Executor::execute(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)
+    ()
+#4  0x0000555555580238 in flexql::Server::processQuery(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) ()
+#5  0x0000555555580bf5 in flexql::Server::handleClient(int) ()
+#6  0x0000555555584a2e in std::thread::_State_impl<std::thread::_Invoker<std::tuple<flexql::ThreadPool::ThreadPool(unsigned long)::{lambda()#1}> > >::_M_run() ()
+#7  0x00007ffff7cecdb4 in ?? ()
+   from /lib/x86_64-linux-gnu/libstdc++.so.6
+#8  0x00007ffff789caa4 in start_thread (
+    arg=<optimized out>)
+    at ./nptl/pthread_create.c:447
+#9  0x00007ffff7929c6c in clone3 ()
+    at ../sysdeps/unix/sysv/linux/x86_64/clone3.S:78
