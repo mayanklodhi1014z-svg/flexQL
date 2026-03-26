@@ -1,0 +1,6 @@
+/home/mayank/Videos/project_2_antigravity/build/CMakeFiles/flexql_core.dir
+/home/mayank/Videos/project_2_antigravity/build/CMakeFiles/flexql-server.dir
+/home/mayank/Videos/project_2_antigravity/build/CMakeFiles/flexql-client.dir
+/home/mayank/Videos/project_2_antigravity/build/CMakeFiles/flexql_master_benchmark.dir
+/home/mayank/Videos/project_2_antigravity/build/CMakeFiles/edit_cache.dir
+/home/mayank/Videos/project_2_antigravity/build/CMakeFiles/rebuild_cache.dir
