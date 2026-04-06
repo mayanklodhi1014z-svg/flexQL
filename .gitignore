@@ -1,0 +1,9 @@
+bin/
+build/
+output*.txt
+data/
+server_out.log
+nohup.out
+perf.data
+__pycache__/
+

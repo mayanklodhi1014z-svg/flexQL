@@ -1,0 +1,29 @@
+#ifndef FLEXQL_H
+#define FLEXQL_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#define FLEXQL_OK 0
+#define FLEXQL_ERROR 1
+
+typedef struct FlexQL FlexQL;
+
+int flexql_open(const char *host, int port, FlexQL **db);
+int flexql_close(FlexQL *db);
+int flexql_exec(
+    FlexQL *db,
+    const char *sql,
+    int (*callback)(void*, int, char**, char**),
+    void *arg,
+    char **errmsg
+);
+int flexql_flush_pipeline(FlexQL *db);
+void flexql_free(void *ptr);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // FLEXQL_H
