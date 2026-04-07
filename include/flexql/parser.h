@@ -46,6 +46,7 @@ struct ASTNode {
     std::string join_table;
     std::string join_on_col1;
     std::string join_on_col2;    
+    std::string join_operator;
 };
 
 class Parser {

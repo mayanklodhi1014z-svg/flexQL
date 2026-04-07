@@ -1,11 +1,13 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <filesystem>
 #include <shared_mutex>
 #include <unordered_map>
 #include <atomic>
 #include <cstdlib>
 #include <cstdint>
+#include <functional>
 #include "flexql/lockfree_hashmap.h"
 #include "flexql/btree_index.h"
 
@@ -43,6 +45,15 @@ public:
         decimal_nulls_.resize(schema.size());
         int_range_indexes_.resize(schema.size(), nullptr);
         decimal_range_indexes_.resize(schema.size(), nullptr);
+        try {
+            std::cout << "Loading table: " << name_ << std::endl;
+            for (const auto& entry : std::filesystem::directory_iterator("data/sst")) {
+                if (entry.path().filename().string().find(name_ + "_") == 0) {
+                    sst_files_.push_back(entry.path().string());
+                    std::cout << "Added SST for table " << name_ << ": " << entry.path().string() << std::endl;
+                }
+            }
+        } catch(...) {}
     }
     ~Table() {
         // Clean up dynamically allocated range indexes
@@ -57,6 +68,10 @@ public:
     const std::string& name() const { return name_; }
     void insertRowFast(const std::string* row_data, size_t num_cols, time_t expires_at = 0);
     void reserveRows(size_t additional);
+    
+    // LSM-Tree operations
+    void flushToSSTable(const std::string& directory);
+    void scanSSTables(const std::function<void(const std::vector<std::string>& row_data, time_t expiration)>& callback) const;
     
     const std::vector<ColumnDef>& schema() const { return schema_; }
     std::shared_mutex& mutex() { return table_mutex_; }
@@ -131,6 +146,7 @@ private:
     std::vector<std::vector<double>> decimal_columns_;
     std::vector<std::vector<uint8_t>> decimal_nulls_;
     std::vector<time_t> expiration_timestamps_;
+    std::vector<std::string> sst_files_; // LSM-Tree written SST files
     
     BTreeIndex<std::string> primary_index_;
     

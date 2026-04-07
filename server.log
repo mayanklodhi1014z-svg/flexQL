@@ -1,2 +1,5 @@
-nohup: ignoring input
-Server error: Bind failed
+Loading WAL on boot...
+WAL load complete.
+FlexQL Server listening on 127.0.0.1:9000 with 8 workers.
+Loading table: EMPLOYEES
+Loading table: DEPARTMENTS

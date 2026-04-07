@@ -1,47 +1,12 @@
-nohup: ignoring input
-GNU gdb (Ubuntu 15.0.50.20240403-0ubuntu1) 15.0.50.20240403-git
-Copyright (C) 2024 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-Type "show copying" and "show warranty" for details.
-This GDB was configured as "x86_64-linux-gnu".
-Type "show configuration" for configuration details.
-For bug reporting instructions, please see:
-<https://www.gnu.org/software/gdb/bugs/>.
-Find the GDB manual and other documentation resources online at:
-    <http://www.gnu.org/software/gdb/documentation/>.
-
-For help, type "help".
-Type "apropos word" to search for commands related to "word"...
-Reading symbols from ./bin/flexql-server...
-(No debugging symbols found in ./bin/flexql-server)
-Starting program: /home/mayank/Videos/project_2_antigravity/bin/flexql-server 
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
-[New Thread 0x7ffff77ff6c0 (LWP 36461)]
-[New Thread 0x7ffff6ffe6c0 (LWP 36462)]
-[New Thread 0x7ffff67fd6c0 (LWP 36463)]
-[New Thread 0x7ffff5ffc6c0 (LWP 36464)]
-[New Thread 0x7ffff57fb6c0 (LWP 36465)]
-[New Thread 0x7ffff4ffa6c0 (LWP 36466)]
-[New Thread 0x7ffff47f96c0 (LWP 36467)]
-[New Thread 0x7ffff3ff86c0 (LWP 36468)]
-[New Thread 0x7ffff37f76c0 (LWP 36469)]
-[New Thread 0x7ffff2ff66c0 (LWP 36470)]
-[Thread 0x7ffff37f76c0 (LWP 36469) exited]
-[Thread 0x7ffff3ff86c0 (LWP 36468) exited]
-[Thread 0x7ffff47f96c0 (LWP 36467) exited]
-[Thread 0x7ffff4ffa6c0 (LWP 36466) exited]
-[Thread 0x7ffff57fb6c0 (LWP 36465) exited]
-[Thread 0x7ffff5ffc6c0 (LWP 36464) exited]
-[Thread 0x7ffff67fd6c0 (LWP 36463) exited]
-[Thread 0x7ffff6ffe6c0 (LWP 36462) exited]
-[Thread 0x7ffff77ff6c0 (LWP 36461) exited]
-[Thread 0x7ffff7e8a740 (LWP 36458) exited]
-[Thread 0x7ffff2ff66c0 (LWP 36470) exited]
-[New process 36458]
-
-Program terminated with signal SIGKILL, Killed.
-The program no longer exists.
-No stack.
+[New Thread 0x7ffff77ff6c0 (LWP 52617)]
+[New Thread 0x7ffff6ffe6c0 (LWP 52618)]
+[New Thread 0x7ffff67fd6c0 (LWP 52619)]
+[New Thread 0x7ffff5ffc6c0 (LWP 52620)]
+[New Thread 0x7ffff57fb6c0 (LWP 52621)]
+[New Thread 0x7ffff4ffa6c0 (LWP 52622)]
+[New Thread 0x7ffff47f96c0 (LWP 52623)]
+[New Thread 0x7ffff3ff86c0 (LWP 52624)]
+[New Thread 0x7ffff37f76c0 (LWP 52625)]
+[New Thread 0x7ffff2ff66c0 (LWP 52626)]

@@ -386,22 +386,39 @@ ASTNode Parser::parse(const std::string& query) {
 
         node.table_name = q.substr(after_from, end_table - after_from);
 
+        
         size_t join_pos = q_upper.find(" INNER JOIN ");
+        int join_len = 12;
+        if (join_pos == std::string::npos) {
+            join_pos = q_upper.find(" JOIN ");
+            join_len = 6;
+        }
         size_t where_pos = q_upper.find(" WHERE ");
 
         if (join_pos != std::string::npos) {
             size_t on_pos = q_upper.find(" ON ", join_pos);
             if (on_pos != std::string::npos) {
-                size_t tb_end = q_upper.find(" ", join_pos + 12);
+                size_t tb_end = q_upper.find(" ", join_pos + join_len);
                 if (tb_end > on_pos) tb_end = on_pos;
-                node.join_table = q.substr(join_pos + 12, tb_end - (join_pos + 12));
+                node.join_table = q.substr(join_pos + join_len, tb_end - (join_pos + join_len));
+
                 
                 size_t on_end = where_pos != std::string::npos ? where_pos : q.length();
                 std::string on_cond = trim(q.substr(on_pos + 4, on_end - (on_pos + 4)));
-                size_t eq_pos = on_cond.find('=');
-                if (eq_pos != std::string::npos) {
-                    node.join_on_col1 = trim(on_cond.substr(0, eq_pos));
-                    node.join_on_col2 = trim(on_cond.substr(eq_pos + 1));
+                std::vector<std::string> ops = {"<=", ">=", "!=", "=", "<", ">"};
+                std::string matched_op = "=";
+                size_t op_pos = std::string::npos;
+                for (const auto& op : ops) {
+                    op_pos = on_cond.find(op);
+                    if (op_pos != std::string::npos) {
+                        matched_op = op;
+                        break;
+                    }
+                }
+                if (op_pos != std::string::npos) {
+                    node.join_on_col1 = trim(on_cond.substr(0, op_pos));
+                    node.join_operator = matched_op;
+                    node.join_on_col2 = trim(on_cond.substr(op_pos + matched_op.length()));
                 }
             }
         }
